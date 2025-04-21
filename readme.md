@@ -10,3 +10,5 @@ This is a full-stack AI chatbot web application built using FastAPI (backend) an
 - Supports dynamic conversation with optional search toggle
 
 - Seamless integration between frontend and backend using REST API
+
+You can access the live version of the app here: [AI chatbot](https://ai-chatbot-agent.streamlit.app/) 

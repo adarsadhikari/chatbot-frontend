@@ -26,7 +26,7 @@ try:
     if response.status_code == 200:
         status_placeholder.success("✅ AI agent is awake!")
 except:
-    status_placeholder.warning("⚠️ AI agent might still be waking up...")
+    status_placeholder.warning("⚠️ AI agent waking up...")
 
 # Optionally: auto-clear the message after a few seconds
 time.sleep(5)
