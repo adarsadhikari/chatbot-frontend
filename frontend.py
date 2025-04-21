@@ -25,13 +25,11 @@ try:
     response = requests.get(API_URL, timeout=5)
     if response.status_code == 200:
         status_placeholder.success("✅ AI agent is awake!")
-    else:
-        status_placeholder.warning("⚠️ AI agent responded, but not with status 200.")
 except:
     status_placeholder.warning("⚠️ AI agent might still be waking up...")
 
 # Optionally: auto-clear the message after a few seconds
-time.sleep(3)
+time.sleep(5)
 status_placeholder.empty()
 
 #for deployment
