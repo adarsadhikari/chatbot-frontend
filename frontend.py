@@ -1,8 +1,17 @@
 import streamlit as st
 import requests
 import time
-#Pings the AI agent in case it is inactive
 
+st.set_page_config(page_title="AI Agent",layout="centered")
+st.title("AI Chatbot")
+st.write("Interact with AI agent")
+system_prompt=st.text_area("Define your AI agent: ")
+user_query=st.text_area("Enter your query: ", height=150, placeholder="Ask anything!")
+allow_web_search=st.checkbox("Allow web search")
+#for local testing
+# API_URL="http://127.0.0.1:9999/chat" 
+
+#Pings the AI agent in case it is inactive
 
 API_URL=st.secrets["api"]["backend_url"]
 
@@ -24,15 +33,6 @@ except:
 # Optionally: auto-clear the message after a few seconds
 time.sleep(3)
 status_placeholder.empty()
-
-st.set_page_config(page_title="AI Agent",layout="centered")
-st.title("AI Chatbot")
-st.write("Interact with AI agent")
-system_prompt=st.text_area("Define your AI agent: ")
-user_query=st.text_area("Enter your query: ", height=150, placeholder="Ask anything!")
-allow_web_search=st.checkbox("Allow web search")
-#for local testing
-# API_URL="http://127.0.0.1:9999/chat" 
 
 #for deployment
 
