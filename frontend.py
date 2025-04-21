@@ -1,5 +1,30 @@
 import streamlit as st
 import requests
+import time
+#Pings the AI agent in case it is inactive
+
+
+API_URL=st.secrets["api"]["backend_url"]
+
+status_placeholder = st.empty()
+
+# Show initial message
+status_placeholder.info("🔄 Waking up AI agent...")
+
+# Try pinging the backend
+try:
+    response = requests.get(API_URL, timeout=5)
+    if response.status_code == 200:
+        status_placeholder.success("✅ AI agent is awake!")
+    else:
+        status_placeholder.warning("⚠️ AI agent responded, but not with status 200.")
+except:
+    status_placeholder.warning("⚠️ AI agent might still be waking up...")
+
+# Optionally: auto-clear the message after a few seconds
+time.sleep(3)
+status_placeholder.empty()
+
 st.set_page_config(page_title="AI Agent",layout="centered")
 st.title("AI Chatbot")
 st.write("Interact with AI agent")
@@ -10,7 +35,6 @@ allow_web_search=st.checkbox("Allow web search")
 # API_URL="http://127.0.0.1:9999/chat" 
 
 #for deployment
-API_URL=st.secrets["api"]["backend_url"]
 
 if st.button("Ask Agent"):
     if user_query.strip():
